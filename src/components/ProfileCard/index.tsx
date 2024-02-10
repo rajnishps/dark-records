@@ -1,5 +1,5 @@
+"use client"
 import { cn } from "@/lib/utils"
-import { Link } from "lucide-react"
 import {
   Card,
   CardHeader,
@@ -8,12 +8,14 @@ import {
   CardContent,
 } from "../ui/card"
 import { People, Planet, Film, Specie, Starship, Vehicle } from "@/types"
+import Link from "next/link"
 
 const ProfileCard = async ({
   data,
 }: {
   data: People | Film | Planet | Specie | Starship | Vehicle | any
 }) => {
+  console.log(data)
   return (
     <Card className={cn("w-[380px]")}>
       <CardHeader>
@@ -23,36 +25,45 @@ const ProfileCard = async ({
       <CardContent className="grid gap-4">
         <div className="flex flex-wrap gap-4">
           {Object?.keys(data)?.map((key, index) => {
-            if (key === "url" || key === "created" || key === "edited") return
+            if (
+              key === "url" ||
+              key === "created" ||
+              key === "edited" ||
+              data[key] === null
+            )
+              return null
             if (typeof data[key] === "string" && data[key].startsWith("http")) {
               return (
-                <div key={data[key][index]}>
-                  <Link
-                    className="p-4"
-                    href={`/${data[key].split("/")[4]}/${
-                      data[key].split("/")[5]
-                    }`}
-                  >
-                    <span className="text-sm font-medium leading-none">hi</span>
-                  </Link>
-                </div>
+                <Link
+                  key={index}
+                  className="p-4"
+                  href={`/${data[key].split("/")[4]}/${
+                    data[key].split("/")[5]
+                  }`}
+                >
+                  <p className="text-sm font-medium leading-none">{key}</p>
+                </Link>
               )
             }
             if (typeof data[key] === "object" && data[key].length > 0) {
-              console.log(data[key])
               return (
                 <div key={index}>
-                  <p className="text-sm font-medium leading-none">{key}</p>
+                  <Link
+                    href={`/${data[key][0].split("/")[4]}`}
+                    className="text-sm font-medium leading-none"
+                  >
+                    {key}
+                  </Link>
                   <div className="">
                     {data[key].map((item: string, index: number) => (
                       <Link
                         className="p-4"
-                        key={data[key][index]}
+                        key={index}
                         href={`/${item.split("/")[4]}/${item.split("/")[5]}`}
                       >
-                        <span className="text-sm font-medium leading-none">
-                          hi
-                        </span>
+                        <p className="text-sm font-medium leading-none">
+                          {index + 1}
+                        </p>
                       </Link>
                     ))}
                   </div>
