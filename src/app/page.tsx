@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { getStarWarsData } from "@/utils/starWarsData"
 import Link from "next/link"
 const categories = [
   "people",
@@ -18,9 +17,7 @@ const categories = [
   "starships",
 ]
 
-const TableHold = async ({ category }: { category: string }) => {
-  const data = await getStarWarsData(category)
-  console.log(data)
+const TableHold = async () => {
   return (
     <Table>
       <TableCaption>May the Force be withyou.</TableCaption>
@@ -32,9 +29,9 @@ const TableHold = async ({ category }: { category: string }) => {
       <TableBody>
         {categories.map((item, index) => (
           <TableRow key={index}>
-            <Link href={item}>
-              <TableCell className="font-medium">{item}</TableCell>
-            </Link>
+            <TableCell className="font-medium">
+              <Link href={item}>{item}</Link>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -43,5 +40,9 @@ const TableHold = async ({ category }: { category: string }) => {
 }
 
 export default function Home() {
-  return <TableHold category={"people"} />
+  return (
+    <div>
+      <TableHold />
+    </div>
+  )
 }

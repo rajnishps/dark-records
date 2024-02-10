@@ -7,51 +7,125 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { People } from "@/types"
 import { getStarWarsData } from "@/utils/starWarsData"
 import Link from "next/link"
 
 export default async function Page() {
   const data = await getStarWarsData("people")
+
   return (
     <Table>
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>name</TableHead>
-          <TableHead>height</TableHead>
-          <TableHead>mass</TableHead>
-          <TableHead>hair_color</TableHead>
-          <TableHead>Skin Color</TableHead>
-          <TableHead>Eye Color</TableHead>
-          <TableHead>Birth Year</TableHead>
-          <TableHead>Gender</TableHead>
-          <TableHead>Starship</TableHead>
+          <TableHead>Name</TableHead>
+          <TableHead className="text-center">Specie</TableHead>
+          <TableHead className="text-center">Birth Year</TableHead>
+          <TableHead className="text-center">Gender</TableHead>
+          <TableHead className="text-center">Starships</TableHead>
+          <TableHead className="text-center">Films</TableHead>
+          <TableHead className="text-center">Vehicles</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.results.map((item) => (
+        {data.results.map((item: People) => (
           <TableRow key={item.name}>
-            <TableCell className="font-medium">{item.name}</TableCell>
-            <TableCell className="font-medium">{item.height}</TableCell>
-            <TableCell className="font-medium">{item.mass}</TableCell>
-            <TableCell className="font-medium">{item.hair_color}</TableCell>
-            <TableCell className="font-medium">{item.skin_color}</TableCell>
-            <TableCell className="font-medium">{item.eye_color}</TableCell>
-            <TableCell className="font-medium">{item.birth_year}</TableCell>
-            <TableCell className="font-medium">{item.gender}</TableCell>
             <TableCell className="font-medium">
-              Starships:
-              <div className="flex">
-                {item.starships.map((starship: string, index: number) => (
-                  <Link
-                    className="p-4"
-                    href={`${starship.split("/")[4]}/${starship.split("/")[5]}`}
-                    key={starship}
-                  >
-                    {index}
-                  </Link>
-                ))}
-              </div>
+              <Link
+                className="p-4"
+                key={item.url}
+                href={`${item.url.split("/")[4]}/${item.url.split("/")[5]}`}
+              >
+                {item.name}
+              </Link>
+            </TableCell>
+            <TableCell className="font-medium text-center">
+              {item.species[0] ? (
+                <Link
+                  className="p-4"
+                  key={item?.species[0]}
+                  href={`${item?.species[0]?.split("/")[4]}/${
+                    item.species[0]?.split("/")[5]
+                  }`}
+                >
+                  Specie
+                </Link>
+              ) : (
+                "-"
+              )}
+            </TableCell>
+
+            <TableCell className="font-medium text-center">
+              {item.birth_year}
+            </TableCell>
+            <TableCell className="font-medium text-center">
+              {item.gender}
+            </TableCell>
+            <TableCell className="font-medium text-center">
+              {item.starships[0] ? (
+                <>
+                  Starships:
+                  <div className="flex justify-center">
+                    {item.starships.map((starship, index: number) => (
+                      <Link
+                        className="p-4"
+                        key={starship}
+                        href={`${starship.split("/")[4]}/${
+                          starship.split("/")[5]
+                        }`}
+                      >
+                        {index + 1}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                "-"
+              )}
+            </TableCell>
+
+            <TableCell className="font-medium text-center">
+              {item.films[0] ? (
+                <>
+                  Films:
+                  <div className="flex justify-center">
+                    {item.films.map((film, index: number) => (
+                      <Link
+                        className="p-4"
+                        key={film}
+                        href={`${film.split("/")[4]}/${film.split("/")[5]}`}
+                      >
+                        {index + 1}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                "-"
+              )}
+            </TableCell>
+            <TableCell className="font-medium text-center">
+              {item.vehicles[0] ? (
+                <>
+                  Vehicles:
+                  <div className="flex justify-center">
+                    {item.vehicles.map((vehicle, index: number) => (
+                      <Link
+                        className="p-4"
+                        key={vehicle}
+                        href={`${vehicle.split("/")[4]}/${
+                          vehicle.split("/")[5]
+                        }`}
+                      >
+                        {index + 1}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                "-"
+              )}
             </TableCell>
           </TableRow>
         ))}
