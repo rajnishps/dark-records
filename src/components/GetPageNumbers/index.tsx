@@ -42,7 +42,7 @@ const GetPagination = ({
             className={`text-lg lg:text-xl ${
               !previous && "cursor-not-allowed hover:bg-none"
             }`}
-            href={previous?.split("=")[1] || ""}
+            href={previous ? to + previous?.split("=")[1] : ""}
           />
         </PaginationItem>
 
@@ -53,7 +53,7 @@ const GetPagination = ({
             className={`text-lg lg:text-xl ${
               !next && "cursor-not-allowed hover:bg-none"
             }`}
-            href={next?.split("=")[1] || ""}
+            href={next ? to + next?.split("=")[1] : ""}
           />
         </PaginationItem>
       </PaginationContent>
