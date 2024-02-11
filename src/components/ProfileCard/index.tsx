@@ -15,7 +15,6 @@ const ProfileCard = async ({
 }: {
   data: People | Film | Planet | Specie | Starship | Vehicle | any
 }) => {
-  console.log(data)
   return (
     <Card className={cn("w-[380px]")}>
       <CardHeader>
@@ -41,7 +40,9 @@ const ProfileCard = async ({
                     data[key].split("/")[5]
                   }`}
                 >
-                  <p className="text-sm font-medium leading-none">{key}</p>
+                  <p className="text-sm font-medium leading-none capitalize">
+                    {key.split("_").join(" ")}
+                  </p>
                 </Link>
               )
             }
@@ -52,7 +53,9 @@ const ProfileCard = async ({
                     href={`/${data[key][0].split("/")[4]}`}
                     className="text-sm font-medium leading-none"
                   >
-                    {key}
+                    <p className="text-sm font-medium leading-none capitalize">
+                      {key.split("_").join(" ")}
+                    </p>
                   </Link>
                   <div className="">
                     {data[key].map((item: string, index: number) => (
@@ -77,7 +80,9 @@ const ProfileCard = async ({
               >
                 <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">{key}</p>
+                  <p className="text-sm font-medium leading-none capitalize">
+                    {key.split("_").join(" ")}
+                  </p>
                   <p className="text-sm text-muted-foreground">{data[key]}</p>
                 </div>
               </div>

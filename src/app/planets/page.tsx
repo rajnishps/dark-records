@@ -7,16 +7,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { People } from "@/types"
+import { Planet } from "@/types"
 import { getStarWarsData } from "@/utils/starWarsData"
 import Link from "next/link"
+
+export const metadata = {
+  title: "Planets",
+}
 
 export default async function Page() {
   const data = await getStarWarsData("people")
 
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
+      <TableCaption>Starwars Planets</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Name</TableHead>

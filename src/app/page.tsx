@@ -23,13 +23,13 @@ const TableHold = async () => {
       <TableCaption>May the Force be withyou.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>Categories</TableHead>
+          <TableHead className="text-center">Categories</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {categories.map((item, index) => (
           <TableRow key={index}>
-            <TableCell className="font-medium">
+            <TableCell className="font-medium text-center">
               <Link href={item}>{item}</Link>
             </TableCell>
           </TableRow>

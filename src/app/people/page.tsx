@@ -10,13 +10,18 @@ import {
 import { People } from "@/types"
 import { getStarWarsData } from "@/utils/starWarsData"
 import Link from "next/link"
+import { Metadata } from "next/types"
 
+export const metadata: Metadata = {
+  title: "People | Darkside",
+  description: "Database of People for the Darkside",
+}
 export default async function Page() {
   const data = await getStarWarsData("people")
 
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
+      <TableCaption>Starwars People</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Name</TableHead>
@@ -33,7 +38,7 @@ export default async function Page() {
           <TableRow key={item.name}>
             <TableCell className="font-medium">
               <Link
-                className="p-4"
+                className="px-2 mx-2"
                 key={item.url}
                 href={`${item.url.split("/")[4]}/${item.url.split("/")[5]}`}
               >
@@ -43,7 +48,7 @@ export default async function Page() {
             <TableCell className="font-medium text-center">
               {item.species[0] ? (
                 <Link
-                  className="p-4"
+                  className="px-2 mx-2"
                   key={item?.species[0]}
                   href={`${item?.species[0]?.split("/")[4]}/${
                     item.species[0]?.split("/")[5]
@@ -65,11 +70,10 @@ export default async function Page() {
             <TableCell className="font-medium text-center">
               {item.starships[0] ? (
                 <>
-                  Starships:
                   <div className="flex justify-center">
                     {item.starships.map((starship, index: number) => (
                       <Link
-                        className="p-4"
+                        className="px-2 mx-2"
                         key={starship}
                         href={`${starship.split("/")[4]}/${
                           starship.split("/")[5]
@@ -88,11 +92,10 @@ export default async function Page() {
             <TableCell className="font-medium text-center">
               {item.films[0] ? (
                 <>
-                  Films:
                   <div className="flex justify-center">
                     {item.films.map((film, index: number) => (
                       <Link
-                        className="p-4"
+                        className="px-2 mx-2"
                         key={film}
                         href={`${film.split("/")[4]}/${film.split("/")[5]}`}
                       >
@@ -108,11 +111,10 @@ export default async function Page() {
             <TableCell className="font-medium text-center">
               {item.vehicles[0] ? (
                 <>
-                  Vehicles:
                   <div className="flex justify-center">
                     {item.vehicles.map((vehicle, index: number) => (
                       <Link
-                        className="p-4"
+                        className="px-2 mx-2"
                         key={vehicle}
                         href={`${vehicle.split("/")[4]}/${
                           vehicle.split("/")[5]
