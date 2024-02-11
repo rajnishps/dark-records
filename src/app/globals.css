@@ -1,7 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+body {
+  background: url("/stars.svg");
+  background-size: contain;
+}
 .star-wars {
   perspective: 800px;
 }

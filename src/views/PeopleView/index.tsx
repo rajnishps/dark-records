@@ -37,7 +37,7 @@ const PeopleView = ({
                 <Link
                   className="px-2 mx-2"
                   key={item.url}
-                  href={`${item.url.split("/")[4]}/${item.url.split("/")[5]}`}
+                  href={`/${item.url.split("/")[4]}/${item.url.split("/")[5]}`}
                 >
                   {item.name}
                 </Link>

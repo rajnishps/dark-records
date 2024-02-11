@@ -3,8 +3,8 @@ import { getStarWarsData } from "@/utils/starWarsData"
 import { Metadata } from "next/types"
 
 export const metadata: Metadata = {
-  title: "Entity | Darkside",
-  description: "Entity Record for the Darkside",
+  title: "Film | Darkside",
+  description: "Film Record for the Darkside",
 }
 
 export default async function Page({ params }: { params: { entity: string } }) {

@@ -1,4 +1,6 @@
+import Loader from "@/components/Loader"
+
 const Loading = () => {
-  return <video autoPlay muted src="/baby-yoda.webm" />
+  return <Loader />
 }
 export default Loading

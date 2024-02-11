@@ -3,7 +3,7 @@ import { getStarWarsData } from "@/utils/starWarsData"
 import { Metadata } from "next/types"
 
 export const metadata: Metadata = {
-  title: "Entity | Darkside",
+  title: "Planet | Darkside",
   description: "Entity Record for the Darkside",
 }
 
