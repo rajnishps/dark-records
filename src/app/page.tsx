@@ -1,7 +1,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -19,23 +18,26 @@ const categories = [
 
 const TableHold = async () => {
   return (
-    <Table>
-      <TableCaption>May the Force be withyou.</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="text-center">Categories</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {categories.map((item, index) => (
-          <TableRow key={index}>
-            <TableCell className="font-medium text-center">
-              <Link href={item}>{item}</Link>
-            </TableCell>
+    <div className="rounded-xl border capitalize ">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="text-center w-96 font-battle cursor-default text-3xl lg:text-4xl py-4">
+              Categories
+            </TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody className="font-jedi text-xl lg:text-2xl">
+          {categories.map((item, index) => (
+            <TableRow key={index}>
+              <TableCell className="font-medium text-center scale-90 hover:scale-100 hover:bg-black/10">
+                <Link href={item}>{item}</Link>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   )
 }
 

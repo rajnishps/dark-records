@@ -10,19 +10,27 @@ import {
 import { People, Planet, Film, Specie, Starship, Vehicle } from "@/types"
 import Link from "next/link"
 
-const ProfileCard = async ({
+const EntityCard = async ({
   data,
 }: {
   data: People | Film | Planet | Specie | Starship | Vehicle | any
 }) => {
   return (
-    <Card className={cn("w-[380px]")}>
-      <CardHeader>
-        <CardTitle>{"name" in data ? data.name : data.title}</CardTitle>
-        <CardDescription>{"gender" in data ? data.gender : ""}</CardDescription>
-      </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className="flex flex-wrap gap-4">
+    <div className="star-wars w-full cursor-default flex justify-center relative text-5xl text-center">
+      <Card
+        className={cn(
+          "w-full  relative origin-[50%_100%] border-0 dark:bg-[#121212] crawl"
+        )}
+      >
+        <CardHeader className="space-y-10">
+          <CardTitle className="text-center text-7xl">
+            {"name" in data ? data.name : data.title}
+          </CardTitle>
+          <CardDescription className="text-center text-4xl">
+            {"gender" in data ? data.gender : ""}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col items-center  space-y-10">
           {Object?.keys(data)?.map((key, index) => {
             if (
               key === "url" ||
@@ -35,12 +43,12 @@ const ProfileCard = async ({
               return (
                 <Link
                   key={index}
-                  className="p-4"
+                  className="p-4 px-8 mx-4"
                   href={`/${data[key].split("/")[4]}/${
                     data[key].split("/")[5]
                   }`}
                 >
-                  <p className="text-sm font-medium leading-none capitalize">
+                  <p className="text-4xl font-bold leading-none capitalize">
                     {key.split("_").join(" ")}
                   </p>
                 </Link>
@@ -51,20 +59,20 @@ const ProfileCard = async ({
                 <div key={index}>
                   <Link
                     href={`/${data[key][0].split("/")[4]}`}
-                    className="text-sm font-medium leading-none"
+                    className="text-4xl font-bold leading-none"
                   >
-                    <p className="text-sm font-medium leading-none capitalize">
+                    <p className="text-4xl font-bold leading-none capitalize">
                       {key.split("_").join(" ")}
                     </p>
                   </Link>
-                  <div className="">
+                  <div className="flex items-center justify-center">
                     {data[key].map((item: string, index: number) => (
                       <Link
-                        className="p-4"
+                        className="p-4 px-8 mx-4"
                         key={index}
                         href={`/${item.split("/")[4]}/${item.split("/")[5]}`}
                       >
-                        <p className="text-sm font-medium leading-none">
+                        <p className="text-4xl font-bold leading-none">
                           {index + 1}
                         </p>
                       </Link>
@@ -74,23 +82,17 @@ const ProfileCard = async ({
               )
             }
             return (
-              <div
-                key={index}
-                className=" grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
-              >
-                <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
-                <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none capitalize">
-                    {key.split("_").join(" ")}
-                  </p>
-                  <p className="text-sm text-muted-foreground">{data[key]}</p>
-                </div>
+              <div className="space-y-4 ">
+                <p className="text-4xl font-bold leading-none capitalize">
+                  {key.split("_").join(" ")}
+                </p>
+                <p className="text-4xl text-muted-foreground">{data[key]}</p>
               </div>
             )
           })}
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   )
 }
-export default ProfileCard
+export default EntityCard
