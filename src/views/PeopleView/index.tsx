@@ -20,11 +20,11 @@ const PeopleView = ({
   hidePagination?: boolean
 }) => {
   return (
-    <div className="w-5/6 rounded-xl border font-battle ">
+    <div className="w-5/6 rounded-lg border font-battle ">
       <Search />
       <Table>
         <TableHeader>
-          <TableRow className="text-xl lg:text-2xl ">
+          <TableRow className="text-lg lg:text-xl ">
             <TableHead className="pl-8">Name</TableHead>
             <TableHead className="text-center py-4">Specie</TableHead>
             <TableHead className="text-center py-4">Birth Year</TableHead>
@@ -34,7 +34,7 @@ const PeopleView = ({
             <TableHead className="text-center py-4">Vehicles</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody className="font-jedi text-sm lg:text-base tracking-widest">
+        <TableBody className="font-jedi text-xs lg:text-base tracking-widest">
           {data.results.map((item: People) => (
             <TableRow key={item.name}>
               <TableCell className="">
