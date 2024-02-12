@@ -10,14 +10,18 @@ import {
 } from "@/components/ui/table"
 import { People } from "@/types"
 import Link from "next/link"
+import Search from "./components/Search"
 
 const PeopleView = ({
   data,
+  hidePagination,
 }: {
   data: { results: []; count: number; previous: string; next: string }
+  hidePagination?: boolean
 }) => {
   return (
     <div className="w-5/6 rounded-xl border font-battle ">
+      <Search />
       <Table>
         <TableHeader>
           <TableRow className="text-xl lg:text-2xl ">
@@ -70,14 +74,16 @@ const PeopleView = ({
         </TableBody>
       </Table>
 
-      {
+      {hidePagination ? (
+        <div className="h-4" />
+      ) : (
         <GetPagination
-          to="/people/page/"
+          to={"/people/page/"}
           total={data.count}
           previous={data.previous}
           next={data.next}
         />
-      }
+      )}
     </div>
   )
 }

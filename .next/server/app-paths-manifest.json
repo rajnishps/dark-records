@@ -1,23 +1,10 @@
 {
-  "/_not-found": "app/_not-found.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js",
-  "/films/page": "app/films/page.js",
-  "/people/[entity]/page": "app/people/[entity]/page.js",
   "/people/page": "app/people/page.js",
-  "/films/[entity]/page": "app/films/[entity]/page.js",
+  "/people/[entity]/page": "app/people/[entity]/page.js",
+  "/people/search/[text]/page": "app/people/search/[text]/page.js",
+  "/page": "app/page.js",
   "/people/page/[number]/page": "app/people/page/[number]/page.js",
-  "/films/page/[number]/page": "app/films/page/[number]/page.js",
-  "/planets/page": "app/planets/page.js",
-  "/planets/[entity]/page": "app/planets/[entity]/page.js",
-  "/planets/page/[number]/page": "app/planets/page/[number]/page.js",
-  "/species/[entity]/page": "app/species/[entity]/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/species/page": "app/species/page.js",
-  "/species/page/[number]/page": "app/species/page/[number]/page.js",
-  "/starships/[entity]/page": "app/starships/[entity]/page.js",
-  "/starships/page": "app/starships/page.js",
-  "/starships/page/[number]/page": "app/starships/page/[number]/page.js",
-  "/vehicles/[entity]/page": "app/vehicles/[entity]/page.js",
-  "/vehicles/page": "app/vehicles/page.js",
-  "/vehicles/page/[number]/page": "app/vehicles/page/[number]/page.js"
+  "/species/page/[number]/page": "app/species/page/[number]/page.js"
 }

@@ -27,7 +27,7 @@ const GetPagination = ({
   const pages = []
   for (let i = 1; i <= pageNumbers; i++) {
     pages.push(
-      <PaginationItem key={i}>
+      <PaginationItem key={i} className="hidden lg:flex">
         <PaginationLink isActive={i == activeNow} href={to + i}>
           {i}
         </PaginationLink>
@@ -35,11 +35,11 @@ const GetPagination = ({
     )
   }
   return (
-    <Pagination className="p-4 flex justify-end">
+    <Pagination className="p-4 flex justify-end overflow-hidden">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            className={`text-lg lg:text-xl ${
+            className={`text-sm lg:text-xl ${
               !previous && "cursor-not-allowed hover:bg-none"
             }`}
             href={previous ? to + previous?.split("=")[1] : ""}
@@ -50,7 +50,7 @@ const GetPagination = ({
 
         <PaginationItem>
           <PaginationNext
-            className={`text-lg lg:text-xl ${
+            className={`text-sm lg:text-xl ${
               !next && "cursor-not-allowed hover:bg-none"
             }`}
             href={next ? to + next?.split("=")[1] : ""}
